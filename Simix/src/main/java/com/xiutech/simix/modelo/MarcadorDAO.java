@@ -40,4 +40,8 @@ public class MarcadorDAO extends AbstractDAO<Marcador>{
     protected List<Marcador> findAll(){
         return super.findAll(Marcador.class);
     }
+
+    public Marcador buscaPorCoord(double latitud, double longitud) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

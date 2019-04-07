@@ -48,12 +48,11 @@ public class InformadorDAO extends AbstractDAO<Informador>{
     }
        
     /**
-     * 
-     * @param id
+     * @param correo
      * @return 
      */
-    public Informador find(int id){
-        return super.find(Informador.class, id);
+    public Informador find(String correo){
+        return super.find(Informador.class, correo);
     }
     
     /**

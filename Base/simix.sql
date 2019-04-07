@@ -8,7 +8,6 @@ DROP TABLE IF EXISTS informador;
 DROP TABLE IF EXISTS comentarista;
 DROP TABLE IF EXISTS administrador;
 
---DROP DATABASE IF EXISTS simix;
 
 CREATE TABLE comentarista(
 	correo text NOT NULL, 
@@ -46,13 +45,13 @@ CREATE TABLE marcador(
 	descripcion text NOT NULL,
 	datos_utiles text NOT NULL,
 	PRIMARY KEY (id_marcador),
-	nombre_tema text REFERENCES tema (nombre)
+	nombre_tema text REFERENCES tema (nombre) --ON DELETE CASCADE
 );
 
 CREATE TABLE comentario(
 	texto text NOT NULL,
-	id_marcador integer REFERENCES marcador (id_marcador),
-	correo_comentarista text REFERENCES comentarista (correo),
+	id_marcador integer REFERENCES marcador (id_marcador), --ON DELETE CASCADE,
+	correo_comentarista text REFERENCES comentarista (correo), --ON DELETE CASCADE
 	PRIMARY KEY (id_marcador, correo_comentarista)
 );
 

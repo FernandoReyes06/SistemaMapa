@@ -40,7 +40,7 @@ made subject to such option by the copyright holder.
 Contributor(s):
 -->
 <hibernate-reverse-engineering>
-  <schema-selection match-catalog="primera_iteracion"/>
+  <schema-selection match-catalog="simix"/>
   <table-filter match-name="marcador"/>
   <table-filter match-name="administrador"/>
   <table-filter match-name="comentarista"/>

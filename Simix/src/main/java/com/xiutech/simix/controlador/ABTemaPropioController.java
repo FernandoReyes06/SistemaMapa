@@ -6,71 +6,78 @@
 package com.xiutech.simix.controlador;
 
 import com.xiutech.simix.modelo.Informador;
+import com.xiutech.simix.modelo.InformadorDAO;
 import com.xiutech.simix.modelo.Marcador;
 import com.xiutech.simix.modelo.MarcadorDAO;
 import com.xiutech.simix.modelo.Tema;
 import com.xiutech.simix.modelo.TemaDAO;
-import java.util.LinkedList;
+import java.awt.Color;
 import java.util.List;
-
+import java.util.Random;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 /**
  *
  * @author fercho117
  */
+@ManagedBean
 public class ABTemaPropioController {
-    private Tema tema;
-    private List<Marcador> marcadores;
+    private String nombre;
+    private String color;
     
-    public ABTemaPropioController(Tema tema){
-    this.tema = tema;
-    this.marcadores = new LinkedList<>();
+    public ABTemaPropioController(){
+        Random random = new Random();
+        Color col = new Color(random.nextInt(), random.nextInt(), random.nextInt());
+        this.color = col.toString();
     }
     
-    public ABTemaPropioController(String nombre, Informador informador){
-    this.tema = new Tema();
-    tema.setNombre(nombre);
-    tema.setInformador(informador);
-    tema.setColor(null); //por agregar color
-    this.marcadores = new LinkedList<>();
-    }
+    public ABTemaPropioController(String nombre){
+        this.nombre = nombre;
+    }    
     
     /**
-     * @return the tema
+     * @return the nombre
      */
-    public Tema getTema() {
-        return tema;
+    public String getNombre() {
+        return nombre;
     }
 
     /**
-     * @param tema the tema to set
+     * @param nombre the nombre to set
      */
-    public void setTema(Tema tema) {
-        this.tema = tema;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+        /**
+     * @return the color
+     */
+    public String getColor() {
+        return color;
     }
 
     /**
-     * @return the marcadores
+     * @param color the color to set
      */
-    public List<Marcador> getMarcadores() {
-        return marcadores;
-    }
-
-    /**
-     * @param marcadores the marcadores to set
-     */
-    public void setMarcadores(List<Marcador> marcadores) {
-        this.marcadores = marcadores;
+    public void setColor(String color) {
+        this.color = color;
     }
     
     //Tal vez sea necesario modificar flujo de eventos.
     public void agregaTema(){
+        Tema tema = new Tema(nombre, color);
         //if(marcadores.isEmpty())
             //error
         TemaDAO udbT = new TemaDAO();
+        InformadorDAO infDAO = new InformadorDAO();        
         MarcadorDAO udbM = new MarcadorDAO();
-        udbT.save(getTema());
-        for(Marcador mcr:getMarcadores())
-            udbM.save(mcr);
+        // La siguiente línea es para obtener correo.
+        //ControladorSesion.UserLogged us= (ControladorSesion.UserLogged) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
+        String correo_ejemplo = ""; //Solo para prueba individual
+        Informador informador = infDAO.find(correo_ejemplo); //(us.getCorreo())
+        tema.setInformador(informador);
+        udbT.save(tema);
+        //pasar a caso de uso AMarcador
     }
 
     /**

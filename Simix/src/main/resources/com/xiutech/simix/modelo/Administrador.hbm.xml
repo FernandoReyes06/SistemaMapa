@@ -5,7 +5,7 @@
   <class name="com.xiutech.simix.modelo.Administrador" optimistic-lock="version" schema="public" table="administrador">
     <id name="correo" type="string">
       <column name="correo"/>
-      <generator class="identity"/>
+      <generator class="assigned"/>
     </id>
     <property name="nombre" type="string">
       <column name="nombre" not-null="true"/>

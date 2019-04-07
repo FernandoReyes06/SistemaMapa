@@ -16,7 +16,7 @@ import javax.faces.bean.ManagedBean;
  */
 
 @ManagedBean
-public class ABInformadorControlller {
+public class ABInformadorController {
     private String nombre;
     private String correo;
     private String contrasenia;
