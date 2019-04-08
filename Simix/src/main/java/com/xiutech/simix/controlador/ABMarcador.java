@@ -8,12 +8,14 @@ package com.xiutech.simix.controlador;
 import com.xiutech.simix.modelo.Marcador;
 import com.xiutech.simix.modelo.MarcadorDAO;
 import com.xiutech.simix.modelo.Tema;
+import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 /**
  *
  * @author fercho117
  */
+@ManagedBean
 public class ABMarcador {
     private double longitud;
     private double latitud;
@@ -63,7 +65,7 @@ public class ABMarcador {
 
     public void agregaMarcador(){
         MarcadorDAO mdb =new MarcadorDAO();
-        Marcador marcador = mdb.buscaPorCoord(latitud, longitud);
+        Marcador marcador = mdb.buscaPorLatLng(latitud, longitud);
         /**
          * Envia mensaje de error, marcador repetido
          * if(m!= null){
