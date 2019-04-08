@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view>
+        <h:head>
+            <title>Alta de Marcador Tema</title>
+            <h:outputStylesheet name="CSS/estilos.css"/>
+        </h:head>
+        <h:body>
+            <header>
+                <h1>Simix</h1>
+            </header>
+            <main>
+                <section>
+                </section>
+                <aside>
+                    <h:form id="form">
+                        <h1> Marcador</h1>
+                        <p:inputNumber  decimalPlaces="6" placeholder="Longitud" id="longitud" value="#{aBMarcador.longitud}" disabled="true"/>
+                        <p:inputNumber id="latitud" placeholder="Latitud" decimalPlaces="6" value="#{aBMarcador.longitud}" disabled="true"/>
+                        <p:inputTextarea id="descripcion" placeholder="Descripcion" value="${aBMarcador.descripcion}"  required="true"/>
+                        <p:commandButton id="agregaMarcador" value="Agrega Marcador" action="#{agregaMarcador.agregaMarcador()}" update="form"/>
+                    </h:form>
+                </aside>
+            </main>
+            <footer>
+                <h3>
+                    <center> © 2019, XiuTech, Todos los derechos reservados</center>
+                </h3>
+            </footer>
+        </h:body>
+    </f:view>
+</html>
