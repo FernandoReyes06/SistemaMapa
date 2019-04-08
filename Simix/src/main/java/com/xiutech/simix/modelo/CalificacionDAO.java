@@ -18,26 +18,26 @@ public class CalificacionDAO extends AbstractDAO<Calificacion>{
     }
     
     @Override
-    protected void save(Calificacion calificacion){
+    public void save(Calificacion calificacion){
         super.save(calificacion);
     }
     
     
     @Override
-    protected void update(Calificacion calificacion){
+    public void update(Calificacion calificacion){
         super.update(calificacion);
     }
         
     @Override
-    protected void delete(Calificacion calificacion){
+    public void delete(Calificacion calificacion){
         super.delete(calificacion);
     }
     
-    protected Calificacion find(CalificacionId id){
+    public Calificacion find(CalificacionId id){
         return super.find(Calificacion.class, id);
     }
     
-    protected List<Calificacion> findAll(){
+    public List<Calificacion> findAll(){
         return super.findAll(Calificacion.class);
     }
       

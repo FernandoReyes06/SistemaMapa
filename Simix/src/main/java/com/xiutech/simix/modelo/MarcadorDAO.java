@@ -6,6 +6,10 @@
 package com.xiutech.simix.modelo;
 
 import java.util.List;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -17,31 +21,78 @@ public class MarcadorDAO extends AbstractDAO<Marcador>{
         super();
     }
     
+    /**
+     * Agrega un Marcador en la base.
+     * @param mcr El marcador a añadir
+     */
     @Override
     public void save(Marcador mcr){
         super.save(mcr);
     }
     
-    
+    /**
+     * Actualiza un Marcador en la base.
+     * @param mcr El marcador a actualizar
+     */
     @Override
-    protected void update(Marcador mcr){
+    public void update(Marcador mcr){
         super.update(mcr);
     }
-        
+     
+    /**
+     * Elimina un Marcador en la base.
+     * @param mcr El marcador a eliminar.
+     */
     @Override
-    protected void delete(Marcador mcr){
+    public void delete(Marcador mcr){
         super.delete(mcr);
     }
     
-    protected Marcador find(int id){
+    /**
+     * Consulta un marcador en la base mediante su identicador.
+     * @param id El identificador del marcador.
+     * @return El Marcador construido con datos de la base. Null si no existe.
+     */
+    public Marcador find(int id){
         return super.find(Marcador.class, id);
     }
     
-    protected List<Marcador> findAll(){
+    /**
+     * Consulta de todos los marcadores en la base.
+     * @return Una lista de los marcadores en la base.
+     */
+    public List<Marcador> findAll(){
         return super.findAll(Marcador.class);
     }
+    
+        /**
+     * Consulta un marcador en la base mediante su ubicacion.
+     * @param latitud La latitud de la posicion del marcador.
+     * @param longitud La latitud de la posicion del marcador.
+     * @return El Marcador construido con datos de la base. Null si no existe.
+     */
+    public Marcador buscaPorLatLng(double lat, double lng) {
+        Marcador m = null;
+        Session session = this.sessionFactory.openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            String hql = "from Marcador where longitud = :lng and latitud = :lat";
+            Query query = session.createQuery(hql);
+            query.setParameter("lng", lng);
+            query.setParameter("lat", lat);
+            m = (Marcador)query.uniqueResult();
+            tx.commit();
+            
+        }catch(HibernateException e){
+            if(tx!=null){
+                tx.rollback();
+            }
+            e.printStackTrace();
 
-    public Marcador buscaPorCoord(double latitud, double longitud) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }finally{
+            session.close();
+        }
+        return m;
     }
 }

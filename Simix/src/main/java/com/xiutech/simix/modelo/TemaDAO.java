@@ -16,27 +16,47 @@ public class TemaDAO extends AbstractDAO<Tema>{
         super();
     }
     
+    /**
+     * Agrega un Tema en la base.
+     * @param tema El tema a añadir
+     */
     @Override
     public void save(Tema tema){
         super.save(tema);
     }
     
-    
+    /**
+     * Actualiza un Tema en la base.
+     * @param tema El tema a actualizar
+     */
     @Override
-    protected void update(Tema tema){
+    public void update(Tema tema){
         super.update(tema);
     }
-        
+    
+    /**
+     * Elimina un Tema en la base.
+     * @param tema El tema a eliminar
+     */
     @Override
-    protected void delete(Tema tema){
+    public void delete(Tema tema){
         super.delete(tema);
     }
     
-    protected Tema find(int id){
-        return super.find(Tema.class, id);
+    /**
+     * Consulta un Tema en la base.
+     * @param tema El tema a consultar
+     * @return  El Tema construido con datos en la base. Null si no existe.
+     */
+    public Tema find(String nombre){
+        return super.find(Tema.class, nombre);
     }
     
-    protected List<Tema> findAll(){
+    /**
+     * Consulta de todos los temas en la base.
+     * @return Una lista de los temas en la base.
+     */
+    public List<Tema> findAll(){
         return super.findAll(Tema.class);
     }
 }

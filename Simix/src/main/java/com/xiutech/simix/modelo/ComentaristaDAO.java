@@ -18,26 +18,26 @@ public class ComentaristaDAO extends AbstractDAO<Comentarista>{
     }
     
     @Override
-    protected void save(Comentarista comentarista){
+    public void save(Comentarista comentarista){
         super.save(comentarista);
     }
     
     
     @Override
-    protected void update(Comentarista comentarista){
+    public void update(Comentarista comentarista){
         super.update(comentarista);
     }
         
     @Override
-    protected void delete(Comentarista comentarista){
+    public void delete(Comentarista comentarista){
         super.delete(comentarista);
     }
     
-    protected Comentarista find(String correo){
+    public Comentarista find(String correo){
         return super.find(Comentarista.class, correo);
     }
     
-    protected List<Comentarista> findAll(){
+    public List<Comentarista> findAll(){
         return super.findAll(Comentarista.class);
     }
       

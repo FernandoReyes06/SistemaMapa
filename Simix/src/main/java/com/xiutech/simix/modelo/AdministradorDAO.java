@@ -18,26 +18,26 @@ public class AdministradorDAO extends AbstractDAO<Administrador>{
     }
     
     @Override
-    protected void save(Administrador admin){
+    public void save(Administrador admin){
         super.save(admin);
     }
     
     
     @Override
-    protected void update(Administrador admin){
+    public void update(Administrador admin){
         super.update(admin);
     }
         
     @Override
-    protected void delete(Administrador admin){
+    public void delete(Administrador admin){
         super.delete(admin);
     }
     
-    protected Administrador find(String correo){
+    public Administrador find(String correo){
         return super.find(Administrador.class, correo);
     }
     
-    protected List<Administrador> findAll(){
+    public List<Administrador> findAll(){
         return super.findAll(Administrador.class);
     }
     

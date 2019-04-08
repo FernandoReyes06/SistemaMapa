@@ -18,26 +18,26 @@ public class ComentarioDAO extends AbstractDAO<Comentario>{
     }
     
     @Override
-    protected void save(Comentario comentario){
+    public void save(Comentario comentario){
         super.save(comentario);
     }
     
     
     @Override
-    protected void update(Comentario comentario){
+    public void update(Comentario comentario){
         super.update(comentario);
     }
         
     @Override
-    protected void delete(Comentario comentario){
+    public void delete(Comentario comentario){
         super.delete(comentario);
     }
     
-    protected Comentario find(ComentarioId correo){
-        return super.find(Comentario.class, correo);
+    public Comentario find(ComentarioId id){
+        return super.find(Comentario.class, id);
     }
     
-    protected List<Comentario> findAll(){
+    public List<Comentario> findAll(){
         return super.findAll(Comentario.class);
     }
       
