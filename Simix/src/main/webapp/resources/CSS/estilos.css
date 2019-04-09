@@ -55,6 +55,14 @@ main>aside{
     border-style : double;
     border-color : black;
 
+#iniciasesion{
+        float: right;
+        
+}
+header>h1{
+    float: left;
+}
+
 }
 
 
