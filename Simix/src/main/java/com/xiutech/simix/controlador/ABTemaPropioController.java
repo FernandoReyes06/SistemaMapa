@@ -60,7 +60,7 @@ public class ABTemaPropioController {
         tema = new Tema(nombre, color);
         tema.setInformador(informador);
         udbT.save(tema);
-        return "informador/agregaMarcador?faces-redirect=true";
+        return "/informador/agregaMarcador?faces-redirect=true";
     }
 
     private String generaColor(){
